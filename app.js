@@ -56,29 +56,27 @@ resetButton.addEventListener('click', function() {
     computerScoreEl.textContent = computerScore;
 })
 
-// while (computerScore !== 5) {
-//      wrap.style.display = 'block';
-//  }
-//  else
 
+const myInterval = setInterval(gameEnd, 1000)
 
-    while (computerScore >= 5) {
-        wrap.style.display = 'none';
-    }
+function gameEnd() {
+if (computerScore >= 5) {
+    wrap.style.display= 'none';
+    end.style.display= 'block'
+    console.log('test');
+    // clearInterval(myInterval);
+}    
+else if (computerScore == 0) {
+    wrap.style.display= 'block';
+    end.style.display= 'none';
+}
+else {
+    wrap.style.display= 'block';
+}
 
-
-// function gameEnd() {
-// if (computerScore == 5) {
-//     // wrap.style.display= 'none';
-//     console.log('test')
-// }    
-// else {
-//     wrap.style.display= 'block';
-// }
-// }
-
-
+}
 
 
 
-// setInterval(gameEnd, 2000);
+
+
