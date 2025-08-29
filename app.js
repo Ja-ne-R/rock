@@ -1,3 +1,5 @@
+
+
 const resetButton = document.getElementById('reset');
 
 const buttons = document.querySelectorAll('.game');
@@ -44,6 +46,16 @@ function playRound(playerSelection, computerSelection) {
     else  {
         computerScore++;
         computerScoreEl.textContent = computerScore;
+        hp = i - computerScore;
+        console.log(hp);
+        const heartId = "health" + hp;
+        const heartEl = document.getElementById(heartId);
+        heartEl.remove();
+        // if (computerScore = 1) {
+        //     hp = i - computerScore;
+        //     console.log('health' + hp);
+        //     document.getElementById('health0').remove();
+        // }
         return "You lose, " + computerSelection + " defeated your " + playerSelection;
     }
 }
@@ -54,6 +66,8 @@ resetButton.addEventListener('click', function() {
     playerScoreEl.textContent = playerScore;
     computerScore = '0';
     computerScoreEl.textContent = computerScore;
+    // let i = 0;
+    // console.log(i + "test");
 })
 
 
@@ -76,7 +90,44 @@ else {
 
 }
 
+const hearts = document.querySelectorAll('#heart');
 
 
 
+let i = 0;
 
+function createHearts() {
+
+    while (i < 5) {
+    const newHearts = document.createElement('button');
+    let name = "health" + i;
+    newHearts.setAttribute("id", name);
+    newHearts.setAttribute("class", "hp");
+    newHearts.innerHTML = "&#x1F9E1;";
+
+    const currentDiv = document.getElementById('hp-bar');
+    currentDiv.appendChild(newHearts);
+    i++;
+    }
+
+}
+
+
+
+start.addEventListener('click', createHearts);
+
+
+const startBtn = document.querySelector('start');
+
+
+//     function countHearts() {
+//     test = i - computerScore;
+//         console.log(test);
+
+// }
+
+// start.addEventListener('click', countHearts);
+
+function checkLives() {
+    console.log(i);
+}

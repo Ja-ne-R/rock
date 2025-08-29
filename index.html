@@ -9,19 +9,28 @@
 </head>
 
 <body>
+
+    
 <div class="wrapper">
     <h1>Rock Paper Scissors Game</h1>
-    <p>Choose your move:</p>
+    <p class="choosetxt">Choose your move:</p>
     <div class="buttons">
         <button class="game" id="rock">&#x1F44A;</button>
         <button class="game" id="paper">&#x1f590;</button>
         <button class="game" id="scissors">&#x270c;</button>
     </div>
-    <p id="result"></p>
-    <p id="scores">
+    <p class="choosetxt" id="result"></p>
+    <p class="choosetxt" id="scores">
         Your score: <span id="user-score">0</span>
         Computer score: <span id="computer-score">0</span>
     </p>
+    <div id="startHearts">
+        <button id="start">Start hearts</button>
+    </div>
+ <div id="contain">
+    <aside id="hp-bar"></aside>
+</div>
+   
  </div>   
 
 
@@ -31,7 +40,10 @@
     <div id="resetBtn" class="buttons">
         <button id="reset">&#128260;</button>
 
+
+
     </div>
+    <p id="info">Mozilla shows emojis differently, use Chrome.</p>
 
 
     <script src="app.js"></script>

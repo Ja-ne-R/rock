@@ -4,6 +4,11 @@ body {
     margin: 0;
     padding: 0;
 }
+/* #contain {
+    
+
+} */
+
 
 h1 {
     font-size: 2rem;
@@ -14,8 +19,11 @@ h1 {
 p {
     font-size: 1.5rem;
     font-weight: 600;
-    text-align: center;
     margin-bottom: 0.5rem;
+}
+
+.choosetxt {
+        text-align: center;
 }
 
 .buttons {
@@ -71,4 +79,37 @@ button:hover {
 
 #resetBtn {
     display: flex;
+}
+
+@supports (-moz-appearance: none) {
+    .game {
+        width: 8% !important;
+    }
+    #info {
+        display: block !important;
+    }
+}
+
+#info {
+    display: none;
+    color: #a0a0a0;
+    font-size: 0.6rem;
+}
+
+
+aside {
+    text-align: center;
+
+
+    margin: auto;
+    white-space: nowrap;
+}
+
+/* .hp {
+    margin: auto;
+    padding: 20px;
+} */
+
+#startHearts {
+    text-align: center;
 }
