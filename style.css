@@ -46,7 +46,7 @@ button:hover {
 }
 
 #rock {
-    background-color: #ff0000;
+    background-color: #565656;
 }
 
 #paper {
@@ -74,7 +74,7 @@ button:hover {
 }
 
 .wrapper {
-    display: block;
+    display: none;
 }
 
 #resetBtn {
@@ -112,4 +112,14 @@ aside {
 
 #startHearts {
     text-align: center;
+}
+
+#paper:active, #rock:active, #scissors:active {
+    background-color: #ff0000;
+    transition: 0s;
+}
+
+#restart {
+    text-align: center;
+    margin-top: 20px;
 }

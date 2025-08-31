@@ -1,5 +1,3 @@
-
-
 const resetButton = document.getElementById('reset');
 
 const buttons = document.querySelectorAll('.game');
@@ -14,9 +12,12 @@ const wrap = document.querySelector('.wrapper');
 
 const end = document.querySelector('#game-end');
 
+const begin = document.querySelector('#game-begin');
+
 let playerScore = 0;
 let computerScore = 0;
-
+const start = document.querySelector('.start');
+const myInterval = setInterval(gameEnd, 1000);
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         const result = playRound(button.id, computerPlay());
@@ -61,34 +62,13 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-resetButton.addEventListener('click', function() {
-    playerScore = '0';
-    playerScoreEl.textContent = playerScore;
-    computerScore = '0';
-    computerScoreEl.textContent = computerScore;
-    // let i = 0;
-    // console.log(i + "test");
-})
 
 
-const myInterval = setInterval(gameEnd, 1000)
 
-function gameEnd() {
-if (computerScore >= 5) {
-    wrap.style.display= 'none';
-    end.style.display= 'block'
-    console.log('test');
-    // clearInterval(myInterval);
-}    
-else if (computerScore == 0) {
-    wrap.style.display= 'block';
-    end.style.display= 'none';
-}
-else {
-    wrap.style.display= 'block';
-}
 
-}
+
+
+
 
 const hearts = document.querySelectorAll('#heart');
 
@@ -97,6 +77,7 @@ const hearts = document.querySelectorAll('#heart');
 let i = 0;
 
 function createHearts() {
+    i = 0;
 
     while (i < 5) {
     const newHearts = document.createElement('button');
@@ -108,6 +89,7 @@ function createHearts() {
     const currentDiv = document.getElementById('hp-bar');
     currentDiv.appendChild(newHearts);
     i++;
+
     }
 
 }
@@ -117,7 +99,16 @@ function createHearts() {
 start.addEventListener('click', createHearts);
 
 
-const startBtn = document.querySelector('start');
+start.addEventListener('click', function() {
+
+    begin.style.display= 'none';
+    wrap.style.display= 'block';
+    console.log('test');
+    console.log(i);
+});
+
+
+
 
 
 //     function countHearts() {
@@ -131,3 +122,41 @@ const startBtn = document.querySelector('start');
 function checkLives() {
     console.log(i);
 }
+
+
+resetButton.addEventListener('click', function() {
+    playerScore = 0;
+    playerScoreEl.textContent = playerScore;
+    computerScore = 0;
+    computerScoreEl.textContent = computerScore;
+
+    // Remove all heart buttons
+    const hpBar = document.getElementById('hp-bar');
+    hpBar.innerHTML = '';
+
+    // Reset i and add hearts
+    i = 0;
+    createHearts();
+});
+function gameEnd() {
+
+if (computerScore >= 5) {
+    wrap.style.display= 'none';
+    end.style.display= 'block'
+    console.log('test');
+    playerScore = 0;
+    playerScoreEl.textContent = playerScore;
+    computerScore = 0;
+    computerScoreEl.textContent = computerScore;
+    
+}    
+
+
+}
+
+const restart = document.querySelector('#restart');
+restart.addEventListener('click', function() {
+
+    end.style.display= 'none';
+    begin.style.display= 'block';
+});
