@@ -1,3 +1,8 @@
+
+
+
+
+
 const resetButton = document.getElementById('reset');
 
 const buttons = document.querySelectorAll('.game');
@@ -13,6 +18,11 @@ const wrap = document.querySelector('.wrapper');
 const end = document.querySelector('#game-end');
 
 const begin = document.querySelector('#game-begin');
+
+
+// document.body.style.backgroundColor= '#d5d5d5ff';
+
+// document.body.style.backgroundColor = '#67dd8c';
 
 let playerScore = 0;
 let computerScore = 0;
@@ -103,6 +113,7 @@ start.addEventListener('click', function() {
 
     begin.style.display= 'none';
     wrap.style.display= 'block';
+    document.body.style.backgroundColor = '#d5d5d5ff';
     console.log('test');
     console.log(i);
 });
@@ -138,9 +149,26 @@ resetButton.addEventListener('click', function() {
     i = 0;
     createHearts();
 });
+
+    b = 0;
+
 function gameEnd() {
 
+
+    
 if (computerScore >= 5) {
+
+    let highscore = playerScore;
+    let uname = document.querySelector('#username');
+    let username = uname.value;
+    let selectname = "#name" + b;
+    b++;
+    document.querySelector(selectname).innerHTML = username + " " + highscore;
+
+
+
+
+    console.log('score= ' + highscore);
     wrap.style.display= 'none';
     end.style.display= 'block'
     console.log('test');
@@ -148,7 +176,10 @@ if (computerScore >= 5) {
     playerScoreEl.textContent = playerScore;
     computerScore = 0;
     computerScoreEl.textContent = computerScore;
-    
+    document.body.style.backgroundColor = '#67dd8c';
+
+
+
 }    
 
 
@@ -160,3 +191,24 @@ restart.addEventListener('click', function() {
     end.style.display= 'none';
     begin.style.display= 'block';
 });
+
+restart.addEventListener('click', sortNamesByScore());
+
+function sortNamesByScore() {
+    const leaddiv = document.getElementById('scoreboard-div');
+    const names = Array.from(leaddiv.getElementsByClassName('names'));
+
+    // Sort the names based on the score
+    names.sort((a, b) => {
+        const scoreA = parseInt(a.innerText.split(': ')[1]); // Extract score from text
+        const scoreB = parseInt(b.innerText.split(': ')[1]);
+        return scoreB - scoreA; // Sort in descending order
+    });
+
+    // Clear the current list
+    leaddiv.innerHTML = '';
+
+    // Append the sorted names back to the div
+    names.forEach(name => leaddiv.appendChild(name));
+}
+

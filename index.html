@@ -13,6 +13,13 @@
 <div id="game-begin">
     <h1>Rock Paper Scissors Game</h1>
     <p class="choosetxt">You have 5 hearts, you lose them, you lose the game.</p>
+
+    <form id="getname">
+        <label for="username">Name</label>
+        <input type="text" name="username" id="username"><br>
+        <input id="submit" type="submit" value="submit">
+    </form>
+
     <div id="startHearts">
         <button class="start" id="start">Start the game</button>
     </div>
@@ -54,8 +61,18 @@
 
     <p id="info">Mozilla shows emojis differently, use Chrome.</p>
 
+    <section id="scoreboard">
+    <h1>scoreboard</h1>
+    <div id="scoreboard-div">
+
+    </div>
+    </section>
+
+
+
 
     <script src="app.js"></script>
+    <script src="scoreboard.js"></script>
 </body>
 
 </html>
