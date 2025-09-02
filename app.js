@@ -116,6 +116,7 @@ start.addEventListener('click', function() {
     document.body.style.backgroundColor = '#d5d5d5ff';
     console.log('test');
     console.log(i);
+    
 });
 
 
@@ -192,23 +193,27 @@ restart.addEventListener('click', function() {
     begin.style.display= 'block';
 });
 
-restart.addEventListener('click', sortNamesByScore());
+// restart.addEventListener('click', sortNamesByScore());
 
-function sortNamesByScore() {
-    const leaddiv = document.getElementById('scoreboard-div');
-    const names = Array.from(leaddiv.getElementsByClassName('names'));
+// function sortNamesByScore() {
+//     const leaddiv = document.getElementById('scoreboard-div');
+//     const names = Array.from(leaddiv.getElementsByClassName('names'));
 
-    // Sort the names based on the score
-    names.sort((a, b) => {
-        const scoreA = parseInt(a.innerText.split(': ')[1]); // Extract score from text
-        const scoreB = parseInt(b.innerText.split(': ')[1]);
-        return scoreB - scoreA; // Sort in descending order
-    });
+//     // Sort the names based on the score
+//     names.sort((a, b) => {
+//         const scoreA = parseInt(a.innerText.split(': ')[1]); // Extract score from text
+//         const scoreB = parseInt(b.innerText.split(': ')[1]);
+//         return scoreB - scoreA; // Sort in descending order
+//     });
 
-    // Clear the current list
-    leaddiv.innerHTML = '';
+//     // Clear the current list
+//     leaddiv.innerHTML = '';
 
-    // Append the sorted names back to the div
-    names.forEach(name => leaddiv.appendChild(name));
-}
+//     // Append the sorted names back to the div
+//     names.forEach(name => leaddiv.appendChild(name));
+// }
 
+
+restart.addEventListener('click', function(){
+
+})

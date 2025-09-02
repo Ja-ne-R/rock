@@ -3,6 +3,7 @@ body {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 /* #contain {
     
@@ -13,7 +14,6 @@ body {
 h1 {
     font-size: 2rem;
     text-align: center;
-    padding-top: 100px;
 }
 
 p {
@@ -122,4 +122,43 @@ aside {
 #restart {
     text-align: center;
     margin-top: 20px;
+}
+
+
+#scoreboard-div {
+    text-align: center;
+}
+
+
+.counter {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.loading-bar-back {
+    position: absolute;
+    height: 8px;
+    background-color: lightgray;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+}
+
+.loading-bar-front {
+    position: absolute;
+    height: 8px;
+    background-color: orangered;
+    width: 0%;
+    border-radius: 5px;
+    border: none;
+}
+
+.container {
+    padding: 200px 0 100% 0;
+    background-color: blueviolet;
+
+}
+
+#getname {
+    text-align: center;
 }
