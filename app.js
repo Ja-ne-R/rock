@@ -153,15 +153,16 @@ resetButton.addEventListener('click', function() {
 
     b = 0;
 
+
+
+
 function gameEnd() {
-
-
-    
+ 
 if (computerScore >= 5) {
 
-    let highscore = playerScore;
-    let uname = document.querySelector('#username');
-    let username = uname.value;
+    // let highscore = playerScore;
+    // let uname = document.querySelector('#username');
+    // let username = uname.value;
     let selectname = "#name" + b;
     b++;
     document.querySelector(selectname).innerHTML = username + " " + highscore;
