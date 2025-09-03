@@ -27,7 +27,7 @@ const begin = document.querySelector('#game-begin');
 let playerScore = 0;
 let computerScore = 0;
 const start = document.querySelector('.start');
-const myInterval = setInterval(gameEnd, 1000);
+// const myInterval = setInterval(gameEnd, 1000);
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         const result = playRound(button.id, computerPlay());
@@ -54,19 +54,17 @@ function playRound(playerSelection, computerSelection) {
         playerScoreEl.textContent = playerScore;
         return "You win, your " + playerSelection + " defeated " + computerSelection;
     }
-    else  {
+    else {
         computerScore++;
         computerScoreEl.textContent = computerScore;
-        hp = i - computerScore;
-        console.log(hp);
-        const heartId = "health" + hp;
-        const heartEl = document.getElementById(heartId);
-        heartEl.remove();
-        // if (computerScore = 1) {
-        //     hp = i - computerScore;
-        //     console.log('health' + hp);
-        //     document.getElementById('health0').remove();
-        // }
+
+        const hearts = document.querySelectorAll('.hp'); // Select all elements with class 'hp'
+        if (hearts.length > 0) {
+            const lastHeart = hearts[hearts.length - 1]; // Get the last heart
+            lastHeart.remove(); // Remove it
+        }
+
+        gameEnd();
         return "You lose, " + computerSelection + " defeated your " + playerSelection;
     }
 }
@@ -123,13 +121,7 @@ start.addEventListener('click', function() {
 
 
 
-//     function countHearts() {
-//     test = i - computerScore;
-//         console.log(test);
 
-// }
-
-// start.addEventListener('click', countHearts);
 
 function checkLives() {
     console.log(i);
@@ -155,17 +147,18 @@ resetButton.addEventListener('click', function() {
 
 
 
-
 function gameEnd() {
  
 if (computerScore >= 5) {
+    let highscore = playerScore;
+    let uname = document.querySelector('#username');
+    let username = uname.value;
+    // let selectname = "#name" + b;
 
-    // let highscore = playerScore;
-    // let uname = document.querySelector('#username');
-    // let username = uname.value;
-    let selectname = "#name" + b;
+    addScoreToBoard(username, highscore);
+
     b++;
-    document.querySelector(selectname).innerHTML = username + " " + highscore;
+    // document.querySelector(selectname).innerHTML = username + " " + highscore;
 
 
 
@@ -179,7 +172,8 @@ if (computerScore >= 5) {
     computerScore = 0;
     computerScoreEl.textContent = computerScore;
     document.body.style.backgroundColor = '#67dd8c';
-
+    gameEnd();
+    k++;
 
 
 }    
@@ -190,29 +184,15 @@ if (computerScore >= 5) {
 const restart = document.querySelector('#restart');
 restart.addEventListener('click', function() {
 
+
+    
     end.style.display= 'none';
     begin.style.display= 'block';
 });
 
-// restart.addEventListener('click', sortNamesByScore());
 
-// function sortNamesByScore() {
-//     const leaddiv = document.getElementById('scoreboard-div');
-//     const names = Array.from(leaddiv.getElementsByClassName('names'));
 
-//     // Sort the names based on the score
-//     names.sort((a, b) => {
-//         const scoreA = parseInt(a.innerText.split(': ')[1]); // Extract score from text
-//         const scoreB = parseInt(b.innerText.split(': ')[1]);
-//         return scoreB - scoreA; // Sort in descending order
-//     });
 
-//     // Clear the current list
-//     leaddiv.innerHTML = '';
-
-//     // Append the sorted names back to the div
-//     names.forEach(name => leaddiv.appendChild(name));
-// }
 
 
 restart.addEventListener('click', function(){
