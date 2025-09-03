@@ -155,6 +155,13 @@ if (computerScore >= 5) {
     let username = uname.value;
     // let selectname = "#name" + b;
 
+    // if scoreboard.js is loaded before app.js or in the same file)
+    if (typeof addScoreToBoard === 'function') {
+        addScoreToBoard(username, highscore);
+    } else {
+        console.error("addScoreToBoard function is not defined or accessible.");
+    }
+
     addScoreToBoard(username, highscore);
 
     b++;

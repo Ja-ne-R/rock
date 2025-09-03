@@ -209,3 +209,78 @@ function sortNamesByScore() {
     // Append the sorted names back to the div
     names.forEach(name => scoreboardList.appendChild(name));
 }
+
+
+
+
+let scoreboardEntries = []; // Array to hold scoreboard data
+
+function afterGameEnd(username, score){
+
+scoreboardEntries.push({ username: username, score: score });
+
+// Sort the array (you can reuse your sort logic, but sort the array, not the DOM elements)
+scoreboardEntries.sort((a, b) => b.score - a.score); // Sort by score descending
+
+// Limit the number of entries (optional, but good practice for a scoreboard)
+const maxEntries = 10; // Or whatever number you want
+if (scoreboardEntries.length > maxEntries) {
+    scoreboardEntries = scoreboardEntries.slice(0, maxEntries);
+}
+
+// Save the updated array to localStorage
+saveScoreboard();
+
+// Update the DOM to display the sorted scores
+displayScoreboard();
+}
+
+
+// -------------------------
+
+function saveScoreboard() {
+    try {
+        localStorage.setItem('rockPaperScoreboard', JSON.stringify(scoreboardEntries));
+    } catch (e) {
+        console.error("Error saving scoreboard to localStorage:", e);
+    }
+}
+
+function loadScoreboard() {
+    try {
+        const savedScoreboard = localStorage.getItem('rockPaperScoreboard');
+        if (savedScoreboard) {
+            scoreboardEntries = JSON.parse(savedScoreboard);
+            // Ensure scores are numbers if necessary (parsing from string)
+            scoreboardEntries.forEach(entry => {
+                entry.score = parseInt(entry.score);
+            });
+            displayScoreboard();
+        }
+    } catch (e) {
+        console.error("Error loading scoreboard from localStorage:", e);
+        // If there's an error loading, start with an empty scoreboard
+        scoreboardEntries = [];
+    }
+}
+
+function displayScoreboard() {
+    const scoreboardList = document.getElementById('scoreboard-list');
+    if (scoreboardList) {
+        // Clear the current list
+        scoreboardList.innerHTML = '';
+
+        // Add each entry from the array to the DOM
+        scoreboardEntries.forEach(entry => {
+            const newScoreItem = document.createElement('li');
+            newScoreItem.textContent = `${entry.username}: ${entry.score}`;
+            newScoreItem.classList.add('names'); // Keep this class for potential styling
+            scoreboardList.appendChild(newScoreItem);
+        });
+    } else {
+        console.error("Scoreboard list element not found.");
+    }
+}
+
+// Call loadScoreboard when your page loads
+document.addEventListener('DOMContentLoaded', loadScoreboard);
